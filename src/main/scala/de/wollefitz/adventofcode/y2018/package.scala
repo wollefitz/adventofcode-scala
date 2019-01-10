@@ -14,26 +14,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package de.wollefitz.adventofcode.y2018
+package de.wollefitz.adventofcode
 
-object Day01 extends App {
-  val lines = parseInput("de/wollefitz/adventofcode/y2018/Day01.input").map(_.toInt)
+import com.typesafe.scalalogging.Logger
 
-  logger.info("Result for Part 1: " + part1(lines))
-  logger.info("Result for Part 2: " + part2(lines))
+import scala.io.Source
 
-  def part1(list: List[Int]): Int = {
-    list match {
-      case x :: tail => x + part1(tail)
-      case Nil => 0
-    }
-  }
+package object y2018 {
+  val logger = Logger("AoC 2018")
 
-  def part2(frequencyList: List[Int], set: Set[Int] = Set.empty, sum: Int = 0): Int = {
-    sum match {
-      case x if set contains x => x
-      case _ if frequencyList.isEmpty => part2(lines, set, sum)
-      case _ => part2(frequencyList.tail, set + sum, sum + frequencyList.head)
-    }
+  def parseInput(resourcePath: String): List[String] = {
+    Source.fromResource(resourcePath).getLines.toList
   }
 }

@@ -16,14 +16,8 @@
 
 package de.wollefitz.adventofcode.y2018
 
-import com.typesafe.scalalogging.Logger
-
-import scala.io.Source
-
 object Day02 extends App {
-
-  val logger = Logger("Day02")
-  val lines = Source.fromResource("de/wollefitz/adventofcode/y2018/Day02.input").getLines.toList
+  val lines = parseInput("de/wollefitz/adventofcode/y2018/Day02.input")
 
   logger.info("Result for Part 1: " + part1(lines).toString)
   logger.info("Result for Part 2: " + part2(lines))
